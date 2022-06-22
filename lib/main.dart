@@ -13,7 +13,12 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("My First App"),
         ),
-        body: const Text("This is body of my app"),
+        body: Column(children: const [
+          Text("Question No 1"),
+          ElevatedButton(onPressed: null, child: Text("Answer No 1")),
+          ElevatedButton(onPressed: null, child: Text("Answer No 2")),
+          ElevatedButton(onPressed: null, child: Text("Answer No 3")),
+        ]),
       ),
     );
   }
