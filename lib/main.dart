@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
   void _answerQuestion() {
     setState(() {
       if (questions.length - 1 == _questionIndex) {
-        _questionIndex--;
+        _questionIndex = 0;
       } else {
         _questionIndex++;
       }
