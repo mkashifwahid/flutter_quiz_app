@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import './question.dart';
-import './answer.dart';
+import 'package:mc_order_app/result.dart';
+import './quiz.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   //MyApp({Key? key}) : super(key: key);
   var _questionIndex = 0;
 
-  var questions = [
+  var _questions = [
     {
       'Question': 'What is your favourite color?',
       'Answer': ['Red', 'Green', 'Blue', 'White']
@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
 
   void _answerQuestion() {
     setState(() {
-      if (_questionIndex < questions.length) {
+      if (_questionIndex < _questions.length) {
         _questionIndex++;
       }
       //else {
@@ -53,31 +53,12 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text("My First App"),
         ),
-        body: _questionIndex < questions.length
-            ? Column(
-                children: [
-                  Question(questions[_questionIndex]['Question'] as String),
-
-                  ...(questions[_questionIndex]['Answer'] as List<String>)
-                      .map((answer) {
-                    return Answer(_answerQuestion, answer);
-                  })
-
-                  // ElevatedButton(
-                  //     onPressed: _answerQuestion, child: const Text("Answer No 1")),
-                  // ElevatedButton(
-                  //     onPressed: () => debugPrint("Answer Chosend 2"),
-                  //     child: const Text("Answer No 2")),
-                  // ElevatedButton(
-                  //     onPressed: () {
-                  //       debugPrint("Answer Chosend 3");
-                  //     },
-                  //     child: const Text("Answer No 3")),
-                ],
-              )
-            : const Center(
-                child: Text('You have Done It.'),
-              ),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                questions: _questions,
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex)
+            : Result(),
       ),
     );
   }
