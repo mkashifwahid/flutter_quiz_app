@@ -23,15 +23,30 @@ class _MyAppState extends State<MyApp> {
   var _questions = [
     {
       'Question': 'What is your favourite color?',
-      'Answer': ['Red', 'Green', 'Blue', 'White']
+      'Answer': [
+        {'text': 'Red', 'score': 100},
+        {'text': 'Green', 'score': 10},
+        {'text': 'Blue', 'score': 50},
+        {'text': 'White', 'score': 1},
+      ]
     },
     {
       'Question': 'Who is your favourite animal?',
-      'Answer': ['Lion', 'Cat', 'Dog', 'Rabbit']
+      'Answer': [
+        {'text': 'Lion', 'score': 100},
+        {'text': 'Cat', 'score': 10},
+        {'text': 'Dog', 'score': 5},
+        {'text': 'Rabbit', 'score': 50},
+      ]
     },
     {
       'Question': 'Who is your Teacher?',
-      'Answer': ['Imaran Shakir', 'Khadim Ali', 'Ali Raza Bhojani', 'Others']
+      'Answer': [
+        {'text': 'Imaran Shakir', 'score': 100},
+        {'text': 'Khadim Ali', 'score': 98},
+        {'text': 'Ali Raza Bhojani', 'score': 99},
+        {'text': 'Others', 'score': 50}
+      ]
     },
   ];
 
