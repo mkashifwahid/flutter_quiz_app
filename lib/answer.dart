@@ -4,6 +4,7 @@ class Answer extends StatelessWidget {
   final VoidCallback selectHandler;
   final String answerString;
 
+  // ignore: use_key_in_widget_constructors
   const Answer(this.selectHandler, this.answerString);
 
   @override

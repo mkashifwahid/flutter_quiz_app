@@ -11,6 +11,7 @@ class MyApp extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
+    // ignore: todo
     // TODO: implement createState
     return _MyAppState();
   }
@@ -20,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   //MyApp({Key? key}) : super(key: key);
   var _questionIndex = 0;
 
-  var _questions = [
+  final _questions = [
     {
       'Question': 'What is your favourite color?',
       'Answer': [
@@ -34,9 +35,9 @@ class _MyAppState extends State<MyApp> {
       'Question': 'Who is your favourite animal?',
       'Answer': [
         {'text': 'Lion', 'score': 100},
+        {'text': 'Dog', 'score': 50},
+        {'text': 'Rabbit', 'score': 25},
         {'text': 'Cat', 'score': 10},
-        {'text': 'Dog', 'score': 5},
-        {'text': 'Rabbit', 'score': 50},
       ]
     },
     {
@@ -49,8 +50,18 @@ class _MyAppState extends State<MyApp> {
       ]
     },
   ];
+  int _totalScore = 0;
 
-  void _answerQuestion() {
+  _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
+  _answerQuestion(int score) {
+    _totalScore += score;
+
     setState(() {
       if (_questionIndex < _questions.length) {
         _questionIndex++;
@@ -73,7 +84,7 @@ class _MyAppState extends State<MyApp> {
                 questions: _questions,
                 answerQuestion: _answerQuestion,
                 questionIndex: _questionIndex)
-            : Result(),
+            : Result(_totalScore, _resetQuiz),
       ),
     );
   }
